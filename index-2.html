@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kolonya MC | Minecraft Sunucusu</title>
+<meta name="description" content="Kolonya MC: Türkçe Minecraft sunucusu. IP adresi, YouTube ve Discord bağlantıları, normal sunuculara göre artıları ve eksileri.">
+<meta name="keywords" content="kolonya mc, kolonya minecraft, kolonyamc, minecraft sunucusu, türkçe minecraft sunucu, mc sunucu">
+<meta property="og:title" content="Kolonya MC | Minecraft Sunucusu">
+<meta property="og:description" content="Kolonya MC sunucusuna katıl! IP, YouTube, Discord ve sunucu karşılaştırması burada.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1b1f27">
+<style>
+  :root{
+    --bg:#14171d; --card:#1e232c; --line:#2d3441; --text:#eef1f6; --muted:#9aa4b5;
+    --green:#5fd068; --green-d:#3c9e45; --red:#ef6a6a; --yt:#ff3d3d; --dc:#5865f2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.55;
+    background-image:radial-gradient(circle at 50% -10%,#24402c 0,transparent 55%);
+    min-height:100vh;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px}
+  header{text-align:center;padding:56px 0 28px}
+  .logo{
+    display:inline-block;width:72px;height:72px;border-radius:14px;margin-bottom:14px;
+    background:
+      linear-gradient(var(--green) 0 30%,#7a5a3a 30% 100%);
+    box-shadow:0 6px 0 #4a3722,0 10px 24px #0008;
+    image-rendering:pixelated;
+  }
+  h1{font-size:clamp(2rem,7vw,3rem);letter-spacing:.5px}
+  h1 span{color:var(--green)}
+  .tag{color:var(--muted);margin-top:6px}
+
+  .box{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;margin-bottom:14px;
+  }
+  .label{font-size:.78rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin-bottom:8px}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .value{
+    flex:1;min-width:180px;font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:1.05rem;word-break:break-all;
+  }
+  .ip .value{font-size:1.3rem;color:var(--green);font-weight:700}
+  button,a.btn{
+    font:inherit;font-weight:600;cursor:pointer;border:0;border-radius:10px;
+    padding:10px 16px;color:#fff;text-decoration:none;display:inline-block;
+    transition:transform .08s,filter .15s;
+  }
+  button:hover,a.btn:hover{filter:brightness(1.12)}
+  button:active,a.btn:active{transform:scale(.96)}
+  .copy{background:#364052}
+  .copy.done{background:var(--green-d)}
+  .go-green{background:var(--green-d)}
+  .go-yt{background:var(--yt)}
+  .go-dc{background:var(--dc)}
+  .yt .label{color:#ff8a8a}
+  .dc .label{color:#a9b1ff}
+
+  h2{margin:42px 0 6px;font-size:1.6rem}
+  .sub{color:var(--muted);margin-bottom:18px}
+
+  .compare{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:640px){.compare{grid-template-columns:1fr 1fr}}
+  .col{border-radius:14px;padding:18px;border:1px solid var(--line);background:var(--card)}
+  .col.us{border-color:var(--green-d);box-shadow:0 0 0 1px var(--green-d) inset}
+  .col h3{font-size:1.15rem;margin-bottom:12px}
+  .col.us h3{color:var(--green)}
+  .col.normal h3{color:var(--muted)}
+  ul{list-style:none}
+  li{padding:9px 0 9px 30px;position:relative;border-top:1px solid var(--line)}
+  li:first-child{border-top:0}
+  li::before{position:absolute;left:0;top:9px;font-weight:700}
+  li.pro::before{content:"✔";color:var(--green)}
+  li.con::before{content:"✖";color:var(--red)}
+  li small{display:block;color:var(--muted);font-size:.85rem}
+
+  .yt .value,.dc .value{
+    white-space:nowrap;word-break:normal;min-width:0;overflow:hidden;
+    text-overflow:ellipsis;font-size:clamp(.78rem,3.7vw,1.05rem);
+  }
+  @media(max-width:560px){.yt .value,.dc .value{flex:1 1 100%}}
+  .table{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+  .trow{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr) minmax(0,1fr);align-items:stretch;border-top:1px solid var(--line)}
+  .trow:first-child{border-top:0}
+  .trow>div{padding:14px 10px;display:block;display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;align-content:center;column-gap:6px;min-width:0}
+  .trow>div small{flex-basis:100%;display:block}
+  .thead{background:#171b22;font-weight:700;font-size:.85rem}
+  .thead>div{padding:12px 10px}
+  .thead .us-h{color:var(--green)}
+  .thead div:last-child{color:var(--muted)}
+  .feat{color:var(--muted);font-weight:600}
+  .good{background:rgba(95,208,104,.10);color:var(--green)}
+  .bad{color:var(--red)}
+  .trow small{color:var(--muted);font-size:.8rem;margin-top:2px}
+  .ic{font-weight:700;margin-right:4px}
+  .f{display:block;margin-bottom:14px;font-weight:600;font-size:.92rem}
+  .f .opt{color:var(--muted);font-weight:400}
+  .f input,.f textarea{
+    display:block;width:100%;margin-top:6px;padding:11px 12px;font:inherit;font-weight:400;
+    color:var(--text);background:#14171d;border:1px solid var(--line);border-radius:10px;
+  }
+  .f input:focus,.f textarea:focus{outline:2px solid var(--green-d);border-color:transparent}
+  .f textarea{resize:vertical;min-height:110px}
+  .hp{position:absolute;left:-9999px;opacity:0}
+  .send{width:100%;padding:12px}
+  .send:disabled{opacity:.6;cursor:wait}
+  .formmsg{margin-top:12px;font-size:.92rem;min-height:1.2em}
+  .formmsg.ok{color:var(--green)}
+  .formmsg.err{color:var(--red)}
+  .note{margin-top:18px;font-size:.9rem;color:var(--muted);text-align:center}
+  footer{text-align:center;color:var(--muted);font-size:.85rem;padding:40px 0 50px}
+  .toast{
+    position:fixed;left:50%;bottom:24px;transform:translate(-50%,40px);opacity:0;
+    background:var(--green-d);color:#fff;padding:10px 18px;border-radius:999px;
+    font-weight:600;transition:.25s;pointer-events:none;
+  }
+  .toast.show{transform:translate(-50%,0);opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo" aria-hidden="true"></div>
+    <h1>Kolonya <span>MC</span></h1>
+    <p class="tag">Türkçe Minecraft sunucusu — gel, katıl, oyna.</p>
+  </header>
+
+  <main>
+    <!-- IP -->
+    <section class="box ip">
+      <div class="label">Sunucu IP</div>
+      <div class="row">
+        <div class="value" id="ip">150.230.157.120</div>
+        <button class="copy" data-copy="#ip">Kopyala</button>
+      </div>
+    </section>
+
+    <!-- YouTube -->
+    <section class="box yt">
+      <div class="label">YouTube Kanalımız</div>
+      <div class="row">
+        <div class="value" id="yt">https://youtube.com/@kolonya1mc</div>
+        <button class="copy" data-copy="#yt">Kopyala</button>
+        <a class="btn go-yt" href="https://youtube.com/@kolonya1mc" target="_blank" rel="noopener">Git</a>
+      </div>
+    </section>
+
+    <!-- Discord -->
+    <section class="box dc">
+      <div class="label">Discord Sunucumuz</div>
+      <div class="row">
+        <div class="value" id="dc">KolonyaMC</div>
+        <button class="copy" data-copy="#dc">Kopyala</button>
+        <button class="go-dc" type="button" disabled style="opacity:.55;cursor:not-allowed">Davet linki yakında</button>
+      </div>
+    </section>
+
+    <!-- Karşılaştırma -->
+    <h2>Neden Kolonya MC?</h2>
+    <p class="sub">Normal bir sunucuyla bizi karşılaştırdık. Artıları da eksileri de dürüstçe yazdık.</p>
+
+    <div class="table">
+      <div class="trow thead">
+        <div></div>
+        <div class="us-h">Kolonya MC</div>
+        <div>Normal Sunucu</div>
+      </div>
+
+      <div class="trow">
+        <div class="feat">RAM</div>
+        <div class="good"><b>24 GB</b></div>
+        <div class="bad"><b>2-4 GB</b></div>
+      </div>
+      <div class="trow">
+        <div class="feat">Lag</div>
+        <div class="good"><span class="ic">✔</span> Yok</div>
+        <div class="bad"><span class="ic">✖</span> Var</div>
+      </div>
+      <div class="trow">
+        <div class="feat">Gecikme</div>
+        <div class="good"><span class="ic">✔</span> Yok</div>
+        <div class="bad"><span class="ic">✖</span> Var</div>
+      </div>
+      <div class="trow">
+        <div class="feat">Depolama</div>
+        <div class="good"><b>200 GB</b><small>Geniş</small></div>
+        <div class="bad"><b>20 GB</b><small>Sınırlı</small></div>
+      </div>
+      <div class="trow">
+        <div class="feat">İşlemci</div>
+        <div class="good"><b>4 çekirdek</b><small>Yüksek güç</small></div>
+        <div class="bad"><b>1 çekirdek</b><small>Düşük güç</small></div>
+      </div>
+      <div class="trow">
+        <div class="feat">Gelişmiş komutlar</div>
+        <div class="good"><span class="ic">✔</span> Var<small>/shop, /rtp, /pv ve dahası</small></div>
+        <div class="bad"><span class="ic">✖</span> Yok<small>Sadece temel komutlar</small></div>
+      </div>
+      <div class="trow">
+        <div class="feat">İlgili yetkililer</div>
+        <div class="good"><span class="ic">✔</span> Var<small>Sorunlarınla ilgilenen ekip</small></div>
+        <div class="bad"><span class="ic">✖</span> Yok<small>Çoğunlukla ilgilenen yok</small></div>
+      </div>
+    </div>
+
+    <!-- Destek -->
+    <h2 id="destek">Destek</h2>
+    <p class="sub">Sorunun, önerin ya da şikayetin mi var? Bize yaz, yetkililer bakacak.</p>
+
+    <form class="box" id="destekForm" novalidate>
+      <input type="hidden" name="access_key" value="e5abee4f-c5a8-4b37-81a6-5a4bd25a4d44">
+      <input type="hidden" name="subject" value="Kolonya MC - Yeni destek mesajı">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+      <label class="f">Minecraft kullanıcı adın
+        <input type="text" name="mc_nick" maxlength="40" required placeholder="Örn: Steve123">
+      </label>
+      <label class="f">Discord adın <span class="opt">(isteğe bağlı)</span>
+        <input type="text" name="discord" maxlength="40" placeholder="Sana dönüş yapabilelim">
+      </label>
+      <label class="f">Mesajın
+        <textarea name="message" rows="5" maxlength="1500" required placeholder="Sorunu veya önerini yaz..."></textarea>
+      </label>
+
+      <button type="submit" class="go-green send" id="gonder">Gönder</button>
+      <p class="formmsg" id="formMsg" role="status"></p>
+    </form>
+  </main>
+
+  <footer>
+    © <span id="yil"></span> Kolonya MC · Minecraft Mojang AB'nin ticari markasıdır; bu site resmî değildir.
+  </footer>
+</div>
+
+<div class="toast" id="toast">Kopyalandı!</div>
+
+<script>
+  document.getElementById('yil').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('destekForm');
+  const msg = document.getElementById('formMsg');
+  const sendBtn = document.getElementById('gonder');
+  function say(t, cls){ msg.textContent = t; msg.className = 'formmsg ' + cls; }
+
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    if(!data.mc_nick.trim() || !data.message.trim()){
+      say('Lütfen kullanıcı adını ve mesajını yaz.', 'err'); return;
+    }
+    if(data.access_key === 'BURAYA_ANAHTAR'){
+      say('Destek formu henüz aktif değil. Discord üzerinden bize ulaşabilirsin.', 'err'); return;
+    }
+    sendBtn.disabled = true; say('Gönderiliyor...', '');
+    try{
+      const r = await fetch('https://api.web3forms.com/submit',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(data)
+      });
+      const j = await r.json();
+      if(j.success){ say('Mesajın bize ulaştı, teşekkürler! ✔', 'ok'); form.reset(); }
+      else say('Gönderilemedi, lütfen tekrar dene.', 'err');
+    }catch(err){
+      say('Bağlantı hatası, lütfen tekrar dene.', 'err');
+    }
+    sendBtn.disabled = false;
+  });
+
+  const toast = document.getElementById('toast');
+  function showToast(){
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'),1500);
+  }
+
+  document.querySelectorAll('.copy').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      const text = document.querySelector(btn.dataset.copy).textContent.trim();
+      try{
+        await navigator.clipboard.writeText(text);
+      }catch(e){
+        const t = document.createElement('textarea');
+        t.value = text; document.body.appendChild(t); t.select();
+        document.execCommand('copy'); t.remove();
+      }
+      const old = btn.textContent;
+      btn.textContent = 'Kopyalandı ✔';
+      btn.classList.add('done');
+      showToast();
+      setTimeout(()=>{btn.textContent = old; btn.classList.remove('done');},1500);
+    });
+  });
+</script>
+</body>
+</html>
